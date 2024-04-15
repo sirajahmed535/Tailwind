@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage Tailwindcss</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="dist/output.css">
+</head>
+<body>
+    <header class="fixed top-0 w-full z-50 font-oswald bg-backgroundcolor drop-shadow-lg dark:bg-black">
+        <nav class="container relative h-14 flex justify-between items-center">
+            <div>
+                <a href="#" class="font-bold text-2xl">BUR <spen class="text-yellow-300">GER</spen></a>
+            </div>
+
+            <div id="main-navbar" class="links-class absolute top-0 left-0 w-full py-14 bg-backgroundcolor border border-whitecolor hidden md:block md:static md:py-0 md:border-none md:w-auto md:ml-auto dark:bg-black">
+                <ul class="flex flex-col text-center gap-5 md:flex-row">
+                    <li class="mx-3"><a href="#home" class="hover:text-yellow-300 ease-in duration-200" id="nav-link">Home</a></li>
+                    <li class="mx-3"><a href="#aboutus" class="hover:text-yellow-300 ease-in duration-200" id="nav-link">About us</a></li>
+                    <li class="mx-3"><a href="#menu" class="hover:text-yellow-300 ease-in duration-200" id="nav-link">Menu</a></li>
+                    <li class="mx-3"><a href="#Review" class="hover:text-yellow-300 ease-in duration-200" id="nav-link">Review</a></li>
+                    <li class="mx-3"><a href="#contact" class="hover:text-yellow-300 ease-in duration-200" id="nav-link">Contact</a></li>
+                </ul>
+                
+                <div class="cancle-btn absolute top-[0.7rem] right-4 text-2xl cursor-pointer md:hidden" id="cross-mark">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+
+            <div>
+                <i class="fa-solid fa-moon px-2 cursor-pointer ml-4 text-xl" id="moon-btn"></i>
+                <i class="fa-solid fa-bars px-2 menu-bar cursor-pointer ml-4 text-xl md:hidden" id="hamburger"></i>
+            </div>
+        </nav>
+    </header>
+
+<!-- hero section -->
+<section class="mt-10">
+    <div class="md:flex md:flex-row md:items-center md:justify-between">
+        <div class="lg:flex lg:basis-2/4 md:flex md:basis-2/4">
+            <img src="images/burger-head.png" class="md:w-4/5">
+        </div>
+
+        <div class="flex flex-col items-center px-4 md:flex md:basis-2/4 md:text-start lg:flex lg:basis-2/4 md:px-0">
+        <h1 class="font-bold text-4xl text-center my-3 font-oswald md:text-start lg:text-start">Happy Tummy With Tasty Burgers</h1> 
+        <hr class="w-52">   
+        <p class="text-center my-3 px-3 font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi maxime repellendus mollitia quaerat tempore a, vitae ratione corporis ipsam quibusdam nobis, magni cum nemo laudantium, eos iste explicabo officia quam. Vitae alias iusto optio!</p>
+
+        <div class="flex flex-row gap-16 my-5">
+        <div class="flex flex-col items-center">
+            <i class="fa-solid fa-utensils text-5xl text-yellow-300"></i>
+            <h6>Delicious</h6> 
+        </div>
+
+        <div class="flex flex-col items-center">
+            <i class="fa-solid fa-droplet text-5xl text-yellow-300"></i>
+            <h6>Fresh</h6> 
+        </div>
+
+        <div class="flex flex-col items-center">
+            <i class="fa-brands fa-envira text-5xl text-yellow-300"></i>
+            <h6>Organic</h6> 
+        </div>
+    </div>
+
+    <a href="#" class="bg-yellow-300 px-4 py-2 rounded text-black border-[1px] ease-in-out duration-200 border-yellow-300 hover:bg-transparent hover:border-[1px] hover:border-yellow-300 hover:text-whitecolor">Learn More</a>
+        </div>
+    </div>
+</section>
+
+
+    <script>
+        const hamburgerr = document.querySelector('#hamburger');
+const mainnavbarr = document.querySelector('#main-navbar');
+const cross = document.querySelector('#cross-mark');
+const navlinkss = document.querySelectorAll('#nav-link');
+
+navlinkss.forEach(link => 
+
+    link.addEventListener('click', () =>{
+    mainnavbarr.classList.add('hidden');
+}))
+
+hamburgerr.addEventListener('click', () =>{
+
+    mainnavbarr.classList.remove('hidden');
+})
+
+cross.addEventListener('click', () =>{
+    mainnavbarr.classList.add('hidden');
+})
+
+
+// dark mode
+const html = document.querySelector('html');
+const themebtn = document.querySelector('#moon-btn');
+
+if (localStorage.getItem('mode' == 'dark')){
+   darkmode();
+}else{
+    lightmode();
+}
+
+themebtn.addEventListener('click', () =>{
+    if(localStorage.getItem('mode') == 'light'){
+        darkmode();
+    }else{
+        lightmode();
+    }
+})
+
+function darkmode(){
+    html.classList.add('dark');
+    themebtn.classList.replace('fa-moon', 'fa-sun');
+    localStorage.setItem('mode', 'dark');
+}
+
+function lightmode(){
+    html.classList.remove('dark');
+    themebtn.classList.replace('fa-sun', 'fa-moon');
+    localStorage.setItem('mode', 'light');
+}
+    </script>
+</body>
+</html>
